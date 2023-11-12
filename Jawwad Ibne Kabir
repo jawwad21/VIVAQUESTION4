@@ -1,0 +1,55 @@
+package viva1_sem1_y2;
+
+/**
+ *
+ * @author Jawwad Ibne Kabir S2197172
+ */
+import java.util.Scanner;
+
+public class Question4 {
+    
+    static boolean Prime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    
+    static void GoldbachConjecture(int evenNumber) {
+        boolean conjectureSatisfied = false;
+
+        
+        for (int i = 2; i <= evenNumber / 2; i++) {
+            if (Prime(i) && Prime(evenNumber - i)) {
+                System.out.println("Goldbach's Conjecture is satisfied: " + i + " + " + (evenNumber - i));
+                conjectureSatisfied = true;
+                break;
+            }
+        }
+
+        
+        if (!conjectureSatisfied) {
+            System.out.println("Goldbach's Conjecture is not satisfied for the given input.");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Take user input for even integer
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter an even integer greater than 2: ");
+        int evenNumber = scanner.nextInt();
+
+        // Validate Goldbach's Conjecture
+        if (evenNumber > 2 && evenNumber % 2 == 0) {
+            GoldbachConjecture(evenNumber);
+        } else {
+            System.out.println("Sorry! Your input doesn't satisfy Goldbach's Conjecture. Please try again");
+        }
+    }
+}
